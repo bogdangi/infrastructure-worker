@@ -7,6 +7,7 @@ RUN apk update && \
                 bash \
                 curl \
                 git \
+                openssh-client \
                 perl-utils \
                 && \
         git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \

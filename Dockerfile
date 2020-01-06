@@ -19,9 +19,9 @@ RUN apk update && \
                 && \
         rm -rf /var/cache/apk/*
 
-RUN /root/.tfenv/bin/tfenv list-remote | xargs -n 1 /root/.tfenv/bin/tfenv install
+RUN /root/.tfenv/bin/tfenv list-remote | xargs -n 1 -P 10 /root/.tfenv/bin/tfenv install
 
-RUN /root/.tgenv/bin/tgenv list-remote | xargs -n 1 /root/.tgenv/bin/tgenv install
+RUN /root/.tgenv/bin/tgenv list-remote | xargs -n 1 -P 10 /root/.tgenv/bin/tgenv install
 
 WORKDIR /root
 

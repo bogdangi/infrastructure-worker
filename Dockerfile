@@ -20,10 +20,10 @@ RUN apk update && \
         rm -rf /var/cache/apk/*
 
 COPY tf-versions-to-install tf-versions-to-install
-RUN cat tf-versions-to-install | xargs -n 1 -P 10 /root/.tfenv/bin/tfenv install
+RUN . ~/.bashrc && cat tf-versions-to-install | xargs -n 1 -P 10 tfenv install
 
 COPY tg-versions-to-install tg-versions-to-install
-RUN cat tg-versions-to-install | xargs -n 1 -P 10 /root/.tgenv/bin/tgenv install
+RUN . ~/.bashrc && cat tg-versions-to-install | xargs -n 1 -P 10 tgenv install
 
 WORKDIR /root
 

@@ -14,10 +14,6 @@ RUN apk update && \
         echo 'PATH=${HOME}/.tfenv/bin:${PATH}' >> ~/.bashrc && \
         git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && \
         echo 'PATH=${HOME}/.tgenv/bin:${PATH}' >> ~/.bashrc && \
-        . ~/.bashrc && \
-        apk del \
-                git \
-                && \
         rm -rf /var/cache/apk/*
 
 COPY tf-versions-to-install tf-versions-to-install

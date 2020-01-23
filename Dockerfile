@@ -11,17 +11,16 @@ RUN apk update && \
                 perl-utils \
                 && \
         git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \
-        echo 'PATH=${HOME}/.tfenv/bin:${PATH}' >> ~/.bashrc && \
         git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && \
-        echo 'PATH=${HOME}/.tgenv/bin:${PATH}' >> ~/.bashrc && \
         rm -rf /var/cache/apk/*
 
+ENV PATH=/root/.tgenv/bin:${PATH}
+ENV PATH=/root/.tfenv/bin:${PATH}
+
 COPY tf-versions-to-install tf-versions-to-install
-RUN . ~/.bashrc && cat tf-versions-to-install | xargs -n 1 -P 10 tfenv install
+RUN cat tf-versions-to-install | xargs -n 1 -P 10 tfenv install
 
 COPY tg-versions-to-install tg-versions-to-install
-RUN . ~/.bashrc && cat tg-versions-to-install | xargs -n 1 -P 10 tgenv install
+RUN cat tg-versions-to-install | xargs -n 1 -P 10 tgenv install
 
 WORKDIR /root
-
-ENTRYPOINT ["/bin/bash"]

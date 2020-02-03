@@ -9,6 +9,7 @@ RUN apk update && \
                 git \
                 openssh-client \
                 perl-utils \
+                python \
                 && \
         git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \
         git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && \
